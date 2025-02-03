@@ -266,7 +266,7 @@ if st.session_state.league_submitted:
                                         podium_luck_event,
                                         podium_luck_score,
                                         luck_score as total_luck_score
-                                    from weekly_matchup_ranks where player_1 = '{player_selection}' and luck_score > 0
+                                    from weekly_matchup_ranks where player_1 = '{player_selection}' and luck_score <> 0
                                  """
             specific_user_luck_df = db_connection.execute(specific_user_query).df()
             st.dataframe(specific_user_luck_df, hide_index = True)
