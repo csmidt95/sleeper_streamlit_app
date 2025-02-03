@@ -4,7 +4,6 @@ from sleeper_functions import get_all_league_for_user_info, get_users_in_leauge,
 import numpy as np
 import duckdb
 from duck_db_query_functions import create_base_table
-import matplotlib.pyplot as plt
 import time
 import requests
 import random
