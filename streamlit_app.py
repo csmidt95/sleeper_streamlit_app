@@ -9,8 +9,6 @@ import requests
 import random
 
 
-st.write('736433419759833088')
-
 
 @st.cache_resource
 def create_duckdb_database(df1, df2, df3, df4):
