@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from sleeper_functions import get_all_league_for_user_info, get_users_in_leauge, get_rosters, get_all_matchups
+from sleeper_functions import *
 import numpy as np
 import duckdb
 from duck_db_query_functions import create_base_table
@@ -62,6 +62,9 @@ if "user_selected_league" not in st.session_state:
 if "user_selected_league_id" not in st.session_state:
     st.session_state.user_selected_league_id = None
 
+if "user_name" not in st.session_state:
+    st.session_state.user_name = None
+
 if "league_submitted" not in st.session_state:
     st.session_state.league_submitted = False
 
@@ -69,9 +72,14 @@ if "league_submitted" not in st.session_state:
 st.title("Sleeper App Data Analytics")
 #if not st.session_state.submitted:
     # Capture user input
-st.session_state.user_id_input = st.text_input(
-    "What is your Sleeper User ID?", value=st.session_state.user_id_input
+
+#Get the user name
+user_name = st.text_input(
+    "What is your Sleeper User Name?", value=st.session_state.user_name
 )
+
+st.session_state.user_id_input = get_user_id(user_name)
+
 st.session_state.user_selected_year = st.selectbox(
     'What year are you interested in?',
     year_options['years']

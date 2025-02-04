@@ -54,3 +54,10 @@ def get_all_matchups(league_id):
         df = pd.concat([df, new_data], ignore_index=True)
     df['league_id'] = league_id
     return df
+
+
+def get_user_id(user_name):
+    get_url = f"https://api.sleeper.app/v1/user/{user_name}"
+    r = requests.get(url= get_url)
+    response_dict = json.loads(r.text)
+    return response_dict['user_id']
